@@ -1,0 +1,26 @@
+.background {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: #055cb4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.200s;
+}
+
+.plus {
+    font-size: 32px;
+    color: white;
+    cursor: pointer
+}
+
+.background:hover{
+    transition: background-color 0.200s;
+    background-color: #055cb4;
+}
+
+
+.container{
+    display: inline-block;
+}
