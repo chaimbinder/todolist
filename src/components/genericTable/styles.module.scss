@@ -1,15 +1,24 @@
-table {
+.table {
     border-collapse: collapse;
     border-spacing: 0;
     width: 100%;
     border: 1px solid #ddd;
   }
   
-  th, td {
+  .th , .td {
     text-align: left;
     padding: 16px;
+    font-size: 19px;
   }
   
-  tr:nth-child(even) {
+  .tr:nth-child(even) {
     background-color: #f2f2f2;
   }
+
+  .input{
+  all: unset;
+  font-size: 19px;
+  width: 100%;
+  }
+
+  .input:focus{ outline: none; }
