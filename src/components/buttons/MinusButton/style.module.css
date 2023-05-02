@@ -1,0 +1,25 @@
+.background {
+    background-color: #055cb4;
+    border-radius: 50%;
+    height: 45px;
+    width: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.minus {
+    color: white;
+    font-size: 30px;
+    cursor:pointer;
+}
+
+.background:hover{
+    transition: background-color 0.200s;
+    background-color: #055cb4;
+}
+
+
+.container{
+    display: inline-block;
+}

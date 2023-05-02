@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import AddTask from '../../components/AddTask'
 import TaskList from '../../components/TaskList'
-import PlusButton from '../../components/PlusButton'
+import PlusButton from '../../components/buttons/PlusButton'
 
 function Home() {
   const [flagPlusButton, setFlagPlusButton] = useState(false)

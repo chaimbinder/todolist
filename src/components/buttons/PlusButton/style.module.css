@@ -11,6 +11,7 @@
 .plus {
     color: white;
     font-size: 30px;
+    cursor:pointer;
 }
 
 .background:hover{

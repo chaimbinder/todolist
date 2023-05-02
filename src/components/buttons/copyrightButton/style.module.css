@@ -1,5 +1,4 @@
 .background {
-    background-color: #055cb4;
     border-radius: 50%;
     height: 45px;
     width: 45px;
@@ -8,9 +7,10 @@
     align-items: center;
 }
 
-.minus {
+.copyright {
     color: white;
     font-size: 30px;
+    cursor:pointer;
 }
 
 .background:hover{

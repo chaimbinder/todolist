@@ -2,7 +2,7 @@ import styles from './style.module.css'
 import restAPI from '../../functions/restAPI'
 import { useState, useEffect } from 'react'
 import GenericTable from '../genericTable'
-import MinusButton from '../MinusButton'
+import MinusButton from '../buttons/MinusButton'
 
 function TaskList() {
   const [list, setList] = useState(null)
