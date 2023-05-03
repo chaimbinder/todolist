@@ -1,7 +1,7 @@
 import styles from './style.module.css'
 import restAPI from '../../functions/restAPI'
 import { useState, useEffect, useContext } from 'react'
-import GenericTable from '../GtenericTable'
+import GenericTable from '../GenericTable'
 import MinusButton from '../buttons/MinusButton'
 import DataContext from '../../context'
 import { CiEdit } from "react-icons/ci";
