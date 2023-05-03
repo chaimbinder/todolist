@@ -1,15 +1,18 @@
 import styles from "./style.module.css";
+import { CiEdit } from "react-icons/ci";
+
 
 function MinusButton({ onClick }) {
-        
     return (
         <div className={styles.container}>
+
             <span className={styles.background} onClick={() => { onClick && onClick() }}>
                 <span className={styles.minus}>
-                &#215;
+                {<CiEdit />}
                 </span>
             </span>
         </div>
+    
     )
 }
 

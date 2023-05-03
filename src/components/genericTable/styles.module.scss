@@ -3,16 +3,36 @@
     border-spacing: 0;
     width: 100%;
     border: 1px solid #ddd;
+   
   }
   
   .th , .td {
     text-align: left;
-    padding: 16px;
+    //padding: 16px;
     font-size: 19px;
   }
-  
+  .td{
+    position: relative;
+  }
+  .tdLine::before {
+    top: 50%;
+    content: "";
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: black;
+    margin-bottom: 5px;
+    position: absolute;
+  }
+
   .tr:nth-child(even) {
     background-color: #f2f2f2;
+  }
+  .tr{
+    height: 10px;
+
+
+
   }
 
   .input{
@@ -22,3 +42,14 @@
   }
 
   .input:focus{ outline: none; }
+
+  .icon{
+    align-items: center
+  }
+  .GenericTable{
+    // background-image: url('../../img/backgroundHeader.png');
+  }
+
+  .s{
+    width: 100%;
+  }

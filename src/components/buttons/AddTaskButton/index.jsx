@@ -1,16 +1,17 @@
 import styles from "./style.module.css";
 
-function PlusButton({ onClick }) {
+function AddTaskButton({ onClick }) {
         
     return (
         <div className={styles.container}>
             <span className={styles.background} onClick={() => { onClick && onClick() }}>
-                <span className={styles.plus}>
-                    &#43;
-                </span>
+                <button className={styles.plus}>
+                  add task
+                </button>
             </span>
         </div>
     )
 }
 
-export default PlusButton;
+export default AddTaskButton;
+

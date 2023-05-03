@@ -1,22 +1,25 @@
 .background {
-    background-color: #055cb4;
+    background-color: red;
     border-radius: 50%;
-    height: 45px;
-    width: 45px;
+    /* height: 45px;
+    width: 45px; */
     display: flex;
     justify-content: center;
     align-items: center;
+    
+    padding: 5px   ;
 }
 
 .minus {
     color: white;
     font-size: 30px;
     cursor:pointer;
+    align-items: center;
 }
 
 .background:hover{
     transition: background-color 0.200s;
-    background-color: #055cb4;
+    background-color: rgb(109, 4, 4);
 }
 
 

@@ -10,11 +10,11 @@ const restAPI = async (path, method, databody) => {
             method: method,
             data: databody
         }
-        let res = await axios(options);
+        let res = await axios(options)
         return res.data
     }
     catch (err) {
-        console.log(err);
+        console.log("err = ",err);
         throw err;
     }
 }

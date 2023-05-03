@@ -1,0 +1,54 @@
+.contaunerForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 420px;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+  }
+  .form {
+    text-align: left;
+  }
+  .label {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  /* .react-tel-input__input, */
+  .select {
+    width: 370px;
+    height: 25px;
+    /* padding: 0.5rem;  */
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+    margin-bottom: 1rem;
+  }
+  
+  .button{
+    margin-right: 0.8rem;
+    padding: 0.5rem 1rem;
+    justify-content: center;
+    font-size: 1rem;
+    border: none;
+    border-radius: 0.25rem;
+    background-color: #0052A5;
+    color: #fff;
+    cursor: pointer;
+    width: 169px;
+    height: 40px;
+    
+  }
+  .input{
+    width: 370px;
+    height: 25px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+    margin-bottom: 1rem;
+  }
+  .submit{
+    justify-content: center;
+    text-align: center;
+  }

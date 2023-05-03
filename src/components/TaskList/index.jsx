@@ -1,82 +1,122 @@
 import styles from './style.module.css'
 import restAPI from '../../functions/restAPI'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import GenericTable from '../GenericTable'
 import MinusButton from '../buttons/MinusButton'
-
+import DataContext from '../../context'
+import { CiEdit } from "react-icons/ci";
+import { BsTrash3 } from "react-icons/bs";
+import TaskPopup from '../popups/TaskPopup'
+import { getColorPriority } from '../../functions/tableFunction'
 function TaskList() {
-  const [list, setList] = useState(null)
+  
+  const {list, setList , getTasks, setpopupComponent} =  useContext(DataContext)
+  let [listChange, setListChange] = useState([])
+
 
   useEffect(() => {
-    restAPI('task/getAllTask').then((res) => {
-      setList(res.rows)
-    })
-  }, [])
-
-  function handleChange(index, key, value) {
-      let copyList = [...list]
-      copyList[index][key] = value;
-      setList(copyList)
-  }
-
-
-  function handleDoubleClick(index) {
-    let copyList = [...list]
-    for (const item of copyList) {
-      item.inInput = false;
+    if(list){
+      console.log("list = ",list);
     }
-    copyList[index].inInput = true;
-    console.log("fffffffffff",copyList);
-      setList(copyList)
+  }, [list])
+
+  // useEffect(() => {
+  //   if(listChange){
+  //     console.log("listChange = ",listChange);
+  //   }
+  // }, [listChange])
+
+
+  function handleDoubleClick(rowItem, index) {
+    // console.log("indexRow = ",rowItem);
+    // console.log("index = ",index);
+    // console.log("list = ",list);
+    // console.log("listindex = ",list[index]);
+    	let copyList = [...list]
+      setpopupComponent(<TaskPopup taskToEdit={rowItem} index={index} funcToDo={editTask}/>)
   }
 
+
+  function editTask(Item , index) {
+		restAPI("task", "PATCH" , Item)
+			.then(() => {
+				setpopupComponent(null);
+				setList((e)=>{
+					let copyList = [...e]
+					copyList.splice(index,1, Item)
+					return copyList
+				})
+			})
+  }
 
 
   let columnArray = [
     { column: 'ID', key: 'taskid' },
-    { column: 'Name', key: 'name_task', inInput: true },
-    {
-      column: 'Description',
-      key: 'description',
-      columnStyle: { color: 'gray' },
-     inInput: true 
-    },
-    { column: 'Level', key: 'priority_level' ,inInput: true },
-    { column: 'Active', key: 'active' ,inInput: true },
+    { column: 'Name', key: 'name_task' },
+    { column: 'Description', key: 'description' },
+    { column: 'Level', key: 'priority_level' },
+    { column: '', key: 'active' },
     { column: '', key: 'icon' },
   ]
+
+
+  let styleRowFunction = ()=>{}
+
+  
+  let styleConditionw = (item, value) => {
+	return {
+		color: getColorPriority(item['priority_level']), 
+		width: value ? value.length + 'ch' : ""}
+	}
+
+
+  let getIcon = (data, indexRow)=>{
+		return <MinusButton
+		onClick={() => {
+		  restAPI('task', 'DELETE', { id: data.taskid })
+			 .then((res) => {
+				console.log("res ",res);
+				let copyList = [...list]
+				console.log("1 = ",copyList);
+				copyList.splice(indexRow, 1)
+				console.log("2 = ",copyList);
+				console.log("indexRow = ",indexRow);
+				setList(copyList)
+			 })
+			 .catch((err) => console.log(err))
+		}}
+	 />
+  }
+
+  let getActive = (item , index)=>{
+	// console.log(item.active);
+	  return <input type='checkbox' checked={!item.active} onClick={(event)=>{
+			let value = !event.target.checked;
+			item.active = value
+
+			restAPI('task', 'PATCH', item)
+				.then(() => {
+					let copyList = [...list]
+					copyList[index].active = value
+					setList(copyList)
+				})
+				.catch((err) => console.log(err))
+
+	}}/>
+  }
+
+
   // {  
   return (
     <div className="Homepage">
       <GenericTable
-        dataFields={columnArray}
+        styleRowFunction={styleRowFunction}
+        columnData={columnArray}
         tableData={list}
-        handleChange={handleChange}
-        genericStyleRow={(func , index)=>func(index)}
         handleDoubleClick={handleDoubleClick}
-        styleConditionw={(item, value) => {
-          return {color: item['priority_level'] === 1
-            ?  'red' 
-            : item['priority_level'] === 2
-            ? 'yellow' 
-            : item['priority_level'] === 3
-            ? 'green' 
-            : {}
-             , width: value ? value.length + 'ch' : ""}}}
-        icon={(data, indexRow) => (
-          <MinusButton
-            onClick={() => {
-              restAPI('task/deleteTask', 'DELETE', { id: data.taskid })
-                .then((res) => {
-                  console.log('delete is Task', data.taskid)
-                  let copyList = [...list]
-                  copyList.splice(indexRow, 1)
-                  setList(copyList)
-                })
-                .catch((err) => console.log(err))
-            }}
-          />
-        )}
+        styleConditionw={styleConditionw}
+        icon={getIcon}
+        active={getActive}
       />
     </div>
   )
