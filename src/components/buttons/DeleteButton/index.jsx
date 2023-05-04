@@ -1,14 +1,14 @@
 import styles from "./style.module.css";
-import { CiEdit } from "react-icons/ci";
+import { BsTrash3 } from "react-icons/bs";
 
 
-function MinusButton({ onClick }) {
+function DeleteButton({ onClick }) {
     return (
         <div className={styles.container}>
 
             <span className={styles.background} onClick={() => { onClick && onClick() }}>
                 <span className={styles.minus}>
-                {<CiEdit />}
+                {<BsTrash3 />}
                 </span>
             </span>
         </div>
@@ -16,4 +16,4 @@ function MinusButton({ onClick }) {
     )
 }
 
-export default MinusButton;
+export default DeleteButton;

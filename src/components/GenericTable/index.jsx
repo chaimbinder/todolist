@@ -1,23 +1,9 @@
-import { useEffect, useState } from 'react'
 import styles from './styles.module.scss'
 import {getLevelPriority} from '../../functions/tableFunction'
 
-export default function GenericTable({styleRowFunction,columnData,tableData,styleTable,styleConditionw,active,icon,handleDoubleClick,}) {
+ function GenericTable({columnData,tableData,styleTable,styleConditionw,active,icon,handleDoubleClick}) {
   
-	function sss(rowItem) {
-    let ss = {}
-    if (!rowItem) {
-      return ss
-    }
-    if (styleConditionw) {
-      ss = { ...ss, ...styleConditionw(rowItem) }
-    }
-   //  if (rowItem.styleRow) {
-   //    // console.log('rowItem.styleRow', rowItem.styleRow)
-   //    ss = { ...ss, ...rowItem.styleRow }
-   //  }
-    return ss
-  }
+
 
 
 
@@ -33,7 +19,7 @@ export default function GenericTable({styleRowFunction,columnData,tableData,styl
 
           <tbody>
             {tableData && tableData[0] &&tableData.map((rowItem, indexRow) => (
-               <tr key={indexRow} className={styles.tr} style={sss(rowItem)}>
+               <tr key={indexRow} className={styles.tr} style={styleConditionw(rowItem)}>
                   {columnData.map(({ key }, indexColumn) => {
 							let value = rowItem[key]
 							console.log();
@@ -55,3 +41,5 @@ export default function GenericTable({styleRowFunction,columnData,tableData,styl
     </div>
   )
 }
+
+export default GenericTable;

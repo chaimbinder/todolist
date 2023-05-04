@@ -16,11 +16,7 @@ function Home() {
 		restAPI("task", "POST" , data)
 			.then((data) => {
 				setpopupComponent(null);
-				setList((e)=>{
-					let copyList = [...e];
-					copyList.push(data)
-					return copyList;
-				})
+				getTasks()
 			})
 	}
 

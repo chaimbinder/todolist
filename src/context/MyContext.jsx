@@ -10,7 +10,6 @@ function MyContext({ children }) {
   const getTasks = () =>{
     restAPI('task','GET').then((res) => {
       setList(res)
-      console.log("uuu");
     })
   }
   return (
