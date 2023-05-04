@@ -19,11 +19,6 @@ function TaskList() {
     restAPI('task', 'PATCH', Item).then(() => {
       setpopupComponent(null)
       getTasks()
-      // setList((e) => {
-      //   let copyList = [...e]
-      //   copyList.splice(index, 1, Item)
-      //   return copyList
-      // })
     })
   }
 
@@ -66,7 +61,7 @@ function TaskList() {
       <input
         type="checkbox"
         checked={!item.active}
-        onClick={(event) => {
+        onChange ={(event) => {
           let value = !event.target.checked
           item.active = value
 
