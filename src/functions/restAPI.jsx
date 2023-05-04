@@ -4,7 +4,6 @@ import axios from 'axios';
 const restAPI = async (path, method, databody) => {
 
     try {
-        // axios.defaults.headers.common.Authorization = `Bearer ${localStorage.token}`;
         let options = {
             url:path,
             method: method,

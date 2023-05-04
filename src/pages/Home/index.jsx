@@ -6,13 +6,11 @@ import DataContext from '../../context/index'
 import restAPI from '../../functions/restAPI'
 
 function Home() {
+	const { setpopupComponent, getTasks, setList } = useContext(DataContext)
 
 	useEffect(() => {
 		getTasks()
 	 }, [])
-
-
-	const { setpopupComponent, getTasks, setList } = useContext(DataContext)
 
 	function inputAddTask(data) {
 		restAPI("task", "POST" , data)

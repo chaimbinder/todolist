@@ -3,15 +3,9 @@ import DataContext from "../../context/index";
 import Popup from 'reactjs-popup';
 import './style.module.css'
 
-
-// Creator : moshe cohen
 function PopupManagement() {
 
-    const { isOpen, setIsOpen, popupComponent, setpopupComponent } = useContext(DataContext);
-    // const handleClosePopup = () => {
-    //     setpopupComponent(null);
-    //     setpopupComponent(null);
-    // };
+    const { popupComponent, setpopupComponent } = useContext(DataContext);
 
     return (
         <>
@@ -26,10 +20,6 @@ function PopupManagement() {
             >
                 <div>
                     {popupComponent}
-                        {/* 
-                   {isOpen&&<button className="close-button" onClick={() => handleClosePopup()}>
-                    
-                    </button>}  */}
                 </div>
             </Popup>
             }
