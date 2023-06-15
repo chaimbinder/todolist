@@ -9,11 +9,16 @@ import { getColorPriority } from '../../functions/tableFunction'
 function TaskList() {
   const { list, setList, setpopupComponent , getTasks} = useContext(DataContext)
 
+  
+  // This function handles the double click event
+
   function handleDoubleClick(rowItem, index) {
     setpopupComponent(
       <TaskPopup taskToEdit={rowItem} index={index} funcToDo={editTask} />,
     )
   }
+
+  // This function is called when a task is edited.
 
   function editTask(Item, index) {
     restAPI('task', 'PATCH', Item).then(() => {
@@ -21,6 +26,8 @@ function TaskList() {
       getTasks()
     })
   }
+
+  // This array defines the columns for the table.
 
   let columnArray = [
     // { column: 'ID', key: 'taskid' },
@@ -31,8 +38,7 @@ function TaskList() {
     { column: '', key: 'icon' },
   ]
 
-  let styleRowFunction = () => {}
-
+  
   let styleConditionw = (item, value) => {
     return {
       color: getColorPriority(item['priority_level']),
@@ -79,7 +85,6 @@ function TaskList() {
   return (
     <div className="Homepage">
       <GenericTable
-        styleRowFunction={styleRowFunction}
         columnData={columnArray}
         tableData={list}
         handleDoubleClick={handleDoubleClick}

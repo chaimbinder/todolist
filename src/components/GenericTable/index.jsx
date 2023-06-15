@@ -9,6 +9,7 @@ import React from 'react'
       {columnData && columnData[0] && (
         <table style={styleTable} className={styles.table}>
 
+      {/* Render the table header */}
           <thead >
             <tr className={styles.tr}>
           {columnData.map(({ column}, k ) => {
@@ -17,6 +18,8 @@ import React from 'react'
           })}
         </tr>
 			</thead>
+
+      {/* Render the table body */}
           <tbody>
             {tableData && tableData[0] &&tableData.map((rowItem, indexRow) => (
                <tr key={indexRow} className={styles.tr} style={styleConditionw(rowItem)}>
